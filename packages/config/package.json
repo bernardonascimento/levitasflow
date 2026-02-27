@@ -1,0 +1,20 @@
+{
+  "name": "@repo/config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "exports": {
+    "./prettier": "./prettier.config.cjs",
+    "./eslint/base": "./eslint/base.cjs",
+    "./eslint/next": "./eslint/next.cjs",
+    "./eslint/react-native": "./eslint/react-native.cjs",
+    "./tsconfig/base": "./tsconfig/base.json",
+    "./tsconfig/next": "./tsconfig/next.json",
+    "./tsconfig/react-native": "./tsconfig/react-native.json"
+  },
+  "peerDependencies": {
+    "eslint": "^8.57.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  }
+}

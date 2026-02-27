@@ -1,0 +1,52 @@
+{
+  "name": "levitasflow",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=20.11.1"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:web": "turbo run dev --filter=@repo/web",
+    "dev:mobile": "turbo run dev --filter=@repo/mobile",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^22.19.13",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.24",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-typescript": "^4.3.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-native": "^5.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs,cjs,json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "apps/**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ],
+    "packages/**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "../../packages/config/tsconfig/next.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@web/*": ["src/*"],
+      "@shared/*": ["../../packages/shared/src/*", "../../packages/shared/*"],
+      "@supabase/*": ["../../packages/supabase/src/*"]
+    },
+    "allowJs": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
