@@ -1,35 +1,25 @@
 import "./global.css";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
-import { getHomeList, type HomeListResult } from "@mobile/application/useCases/getHomeList";
-import HomeScreen from "@mobile/presentation/screens/HomeScreen";
+import AppProviders from "@mobile/presentation/providers/AppProviders";
+import OnboardingScreen from "@mobile/presentation/screens/OnboardingScreen";
+import { useAppTheme } from "@mobile/presentation/providers/ThemeProvider";
 
-const App = (): JSX.Element => {
-  const [data, setData] = useState<HomeListResult | null>(null);
-
-  useEffect(() => {
-    const loadData = async (): Promise<void> => {
-      const homeData = await getHomeList();
-      setData(homeData);
-    };
-
-    void loadData();
-  }, []);
-
-  if (!data) {
-    return (
-      <View className="flex-1 items-center justify-center bg-slate-50">
-        <Text className="text-slate-600">Carregando...</Text>
-      </View>
-    );
-  }
+const AppContent = (): JSX.Element => {
+  const { theme } = useAppTheme();
 
   return (
     <>
-      <HomeScreen data={data} />
-      <StatusBar style="auto" />
+      <OnboardingScreen />
+      <StatusBar style={theme === "dark" ? "light" : "dark"} />
     </>
+  );
+};
+
+const App = (): JSX.Element => {
+  return (
+    <AppProviders>
+      <AppContent />
+    </AppProviders>
   );
 };
 

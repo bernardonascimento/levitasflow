@@ -67,6 +67,9 @@ importers:
       "@babel/runtime":
         specifier: ^7.28.6
         version: 7.28.6
+      "@react-native-async-storage/async-storage":
+        specifier: ^1.23.1
+        version: 1.23.1(react-native@0.74.5(@babel/core@7.29.0)(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@types/react@18.3.28)(react@18.2.0))
       "@repo/shared":
         specifier: workspace:*
         version: link:../../packages/shared
@@ -113,6 +116,9 @@ importers:
       next:
         specifier: 14.2.24
         version: 14.2.24(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -1929,6 +1935,14 @@ packages:
         integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
       }
     engines: { node: ">=14" }
+
+  "@react-native-async-storage/async-storage@1.23.1":
+    resolution:
+      {
+        integrity: sha512-Qd2kQ3yi6Y3+AcUlrHxSLlnBvpdCEMVGFlVBneVOjaFaPU61g1huc38g339ysXspwY1QZA2aNhrk/KlHGO+ewA==
+      }
+    peerDependencies:
+      react-native: ^0.0.0-0 || >=0.60 <1.0
 
   "@react-native-community/cli-clean@13.6.9":
     resolution:
@@ -5495,6 +5509,13 @@ packages:
       }
     engines: { node: ">=8" }
 
+  is-plain-obj@2.1.0:
+    resolution:
+      {
+        integrity: sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
+      }
+    engines: { node: ">=8" }
+
   is-plain-object@2.0.4:
     resolution:
       {
@@ -6378,6 +6399,13 @@ packages:
       }
     engines: { node: ">=16.10" }
 
+  merge-options@3.0.4:
+    resolution:
+      {
+        integrity: sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==
+      }
+    engines: { node: ">=10" }
+
   merge-stream@2.0.0:
     resolution:
       {
@@ -6741,6 +6769,15 @@ packages:
       {
         integrity: sha512-SrQrok4CATudVzBS7coSz26QRSmlK9TzzoFbeKfcPBUFPjcQM9Rqvr/DlJkOrwI/0KcgvMub1n1g5Jt9EgRn4A==
       }
+
+  next-themes@0.4.6:
+    resolution:
+      {
+        integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==
+      }
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   next@14.2.24:
     resolution:
@@ -11004,6 +11041,11 @@ snapshots:
   "@pkgjs/parseargs@0.11.0":
     optional: true
 
+  "@react-native-async-storage/async-storage@1.23.1(react-native@0.74.5(@babel/core@7.29.0)(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@types/react@18.3.28)(react@18.2.0))":
+    dependencies:
+      merge-options: 3.0.4
+      react-native: 0.74.5(@babel/core@7.29.0)(@babel/preset-env@7.29.0(@babel/core@7.29.0))(@types/react@18.3.28)(react@18.2.0)
+
   "@react-native-community/cli-clean@13.6.9":
     dependencies:
       "@react-native-community/cli-tools": 13.6.9
@@ -13546,6 +13588,8 @@ snapshots:
 
   is-path-inside@3.0.3: {}
 
+  is-plain-obj@2.1.0: {}
+
   is-plain-object@2.0.4:
     dependencies:
       isobject: 3.0.1
@@ -14055,6 +14099,10 @@ snapshots:
 
   meow@12.1.1: {}
 
+  merge-options@3.0.4:
+    dependencies:
+      is-plain-obj: 2.1.0
+
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
@@ -14350,6 +14398,11 @@ snapshots:
   neo-async@2.6.2: {}
 
   nested-error-stacks@2.0.1: {}
+
+  next-themes@0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   next@14.2.24(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
