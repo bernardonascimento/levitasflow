@@ -9,7 +9,7 @@ import FooterSection from "@web/presentation/sections/FooterSection";
 
 const HomePage = (): JSX.Element => {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_15%_15%,#312e81_0%,#020617_42%,#020617_100%)] text-slate-100">
       <HeaderSection />
       <HeroSection />
       <BenefitsSection />

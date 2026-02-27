@@ -15,7 +15,8 @@ module.exports = function babelConfig(api) {
             "@supabase": "../../packages/supabase/src"
           }
         }
-      ]
+      ],
+      "react-native-reanimated/plugin"
     ]
   };
 };

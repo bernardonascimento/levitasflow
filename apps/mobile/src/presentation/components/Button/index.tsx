@@ -5,6 +5,8 @@ type ButtonVariant = "primary" | "secondary";
 type ButtonProps = {
   label: string;
   onPress: () => void;
+  onPressIn?: () => void;
+  onPressOut?: () => void;
   variant?: ButtonVariant;
   className?: string;
 };
@@ -22,12 +24,16 @@ const textClassMap: Record<ButtonVariant, string> = {
 const Button = ({
   label,
   onPress,
+  onPressIn,
+  onPressOut,
   variant = "primary",
   className = ""
 }: ButtonProps): JSX.Element => {
   return (
     <Pressable
       onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
       className={`items-center rounded-2xl px-5 py-4 active:opacity-80 ${variantClassMap[variant]} ${className}`}
     >
       <Text className={`text-base font-semibold ${textClassMap[variant]}`}>{label}</Text>

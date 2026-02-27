@@ -32,9 +32,15 @@ export const translations = {
         plans: "Planos"
       },
       hero: {
+        eyebrow: "Plataforma de adoração viva",
         title: "Organize seu ministério. Sirva com mais paz.",
         subtitle:
           "Escalas, agenda, repertório e notificações em um só lugar para sua equipe focar no que importa.",
+        supporting:
+          "Uma experiência pensada para o altar: menos ruído operacional e mais espaço para um culto fluido, criativo e espiritual.",
+        images: {
+          mainAlt: "Banda de louvor em ensaio com iluminação de palco"
+        },
         preview: {
           sunday: "Domingo",
           tasks: "4 tarefas",
@@ -57,6 +63,14 @@ export const translations = {
       },
       features: {
         title: "Funcionalidades essenciais",
+        subtitle:
+          "Cada recurso foi desenhado para sustentar o ritmo do seu ministério com clareza, colaboração e direção.",
+        images: {
+          alt1: "Banda de louvor durante ministracao",
+          alt2: "Músicos ajustando instrumentos em ensaio",
+          alt3: "Vocalista em palco com luzes de adoração",
+          alt4: "Guitarra em primeiro plano com iluminação de igreja"
+        },
         scales: "Escalas",
         agenda: "Agenda",
         unavailability: "Indisponibilidades",
@@ -76,26 +90,35 @@ export const translations = {
       },
       pricing: {
         title: "Planos para cada fase do ministério",
+        subtitle:
+          "Escolha o plano que acompanha o momento da sua equipe e libera vocês para focar no que realmente importa: ministrar.",
         free: {
           name: "Começar",
+          emotional: "Perfeito para dar os primeiros passos com organização e paz.",
           item1: "1 grupo",
           item2: "7 membros",
           item3: "2 projetos multitrack"
         },
         bronze: {
           name: "Essencial",
+          emotional:
+            "Para ministérios em crescimento que precisam de constância no cuidado da equipe.",
           item1: "1 grupo",
           item2: "15 membros",
           item3: "10 projetos multitrack"
         },
         silver: {
           name: "Avançado",
+          emotional:
+            "O plano ideal para equipes ativas que querem excelência sem perder sensibilidade.",
           item1: "3 grupos",
           item2: "50 membros",
           item3: "100 projetos multitrack"
         },
         gold: {
           name: "Ilimitado",
+          emotional:
+            "Estrutura completa para ministérios que sonham grande e servem com profundidade.",
           item1: "Grupos ilimitados",
           item2: "100 membros",
           item3: "Multitracks ilimitadas"
@@ -162,9 +185,15 @@ export const translations = {
         plans: "Pricing"
       },
       hero: {
+        eyebrow: "A living worship platform",
         title: "Organize your ministry. Serve with more peace.",
         subtitle:
           "Schedules, calendar, repertoire and notifications in one place so your team can focus on what matters.",
+        supporting:
+          "Built for the platform, not the office: less operational noise and more room for a fluid, creative and spiritual worship experience.",
+        images: {
+          mainAlt: "Worship band rehearsing under stage lighting"
+        },
         preview: {
           sunday: "Sunday",
           tasks: "4 tasks",
@@ -187,6 +216,14 @@ export const translations = {
       },
       features: {
         title: "Core features",
+        subtitle:
+          "Every feature is crafted to support your ministry rhythm with clarity, collaboration and direction.",
+        images: {
+          alt1: "Worship band leading in service",
+          alt2: "Musicians rehearsing and tuning instruments",
+          alt3: "Vocalist on stage with worship lights",
+          alt4: "Instrument close-up with church stage lighting"
+        },
         scales: "Schedules",
         agenda: "Calendar",
         unavailability: "Unavailability",
@@ -206,26 +243,32 @@ export const translations = {
       },
       pricing: {
         title: "Plans for every ministry stage",
+        subtitle:
+          "Choose the plan that fits your team season and frees your focus for what matters most: worship.",
         free: {
           name: "Start",
+          emotional: "Ideal to start with clarity and calm in your weekly flow.",
           item1: "1 group",
           item2: "7 members",
           item3: "2 multitrack projects"
         },
         bronze: {
           name: "Essential",
+          emotional: "For growing ministries that need consistency in team care.",
           item1: "1 group",
           item2: "15 members",
           item3: "10 multitrack projects"
         },
         silver: {
           name: "Advanced",
+          emotional: "The perfect plan for active teams seeking excellence with sensitivity.",
           item1: "3 groups",
           item2: "50 members",
           item3: "100 multitrack projects"
         },
         gold: {
           name: "Unlimited",
+          emotional: "Full structure for ministries that dream big and serve deeply.",
           item1: "Unlimited groups",
           item2: "100 members",
           item3: "Unlimited multitracks"

@@ -15,13 +15,21 @@ const LanguageSelector = (): JSX.Element => {
     void setAppLanguage(nextLanguage);
   };
 
+  const getLabelClassName = (isSelected: boolean): string => {
+    if (isSelected) {
+      return "font-bold text-orange-600";
+    }
+
+    return theme === "dark" ? "text-white" : "text-slate-700";
+  };
+
   return (
     <View className={`flex-row items-center rounded-full border p-1 ${baseClassName}`}>
       <Pressable
         onPress={() => onChangeLanguage("pt-BR")}
         className={`rounded-full px-3 py-1 ${language === "pt-BR" ? "bg-orange-100" : ""}`}
       >
-        <Text className={language === "pt-BR" ? "font-bold text-orange-600" : ""}>
+        <Text className={getLabelClassName(language === "pt-BR")}>
           {translate("common.language.pt")}
         </Text>
       </Pressable>
@@ -29,7 +37,7 @@ const LanguageSelector = (): JSX.Element => {
         onPress={() => onChangeLanguage("en")}
         className={`rounded-full px-3 py-1 ${language === "en" ? "bg-orange-100" : ""}`}
       >
-        <Text className={language === "en" ? "font-bold text-orange-600" : ""}>
+        <Text className={getLabelClassName(language === "en")}>
           {translate("common.language.en")}
         </Text>
       </Pressable>

@@ -17,7 +17,7 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
-  const [theme, setTheme] = useState<AppTheme>("light");
+  const [theme, setTheme] = useState<AppTheme>("dark");
 
   useEffect(() => {
     const loadTheme = async (): Promise<void> => {
