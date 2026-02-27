@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
+import type { TranslationKey } from "@shared/index";
 import Button from "@web/presentation/components/Button";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 
@@ -69,16 +70,20 @@ const Pricing = (): JSX.Element => {
               </div>
 
               <ul className="mt-8 space-y-3 text-sm text-[color:var(--text)]">
-                {[1, 2, 3].map((itemIndex) => (
-                  <li key={`${plan.id}-${itemIndex}`} className="flex items-center gap-3">
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--accent)]">
-                      <Check size={14} />
-                    </span>
-                    <span className="text-[1.03rem] font-medium text-[color:var(--text)]">
-                      {translate(`landing.pricing.${plan.id}.item${itemIndex}`)}
-                    </span>
-                  </li>
-                ))}
+                {[1, 2, 3].map((itemIndex) => {
+                  const key = `landing.pricing.${plan.id}.item${itemIndex}` as TranslationKey;
+
+                  return (
+                    <li key={`${plan.id}-${itemIndex}`} className="flex items-center gap-3">
+                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--accent)]">
+                        <Check size={14} />
+                      </span>
+                      <span className="text-[1.03rem] font-medium text-[color:var(--text)]">
+                        {translate(key)}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
 
               <div className="mt-auto pt-6">
