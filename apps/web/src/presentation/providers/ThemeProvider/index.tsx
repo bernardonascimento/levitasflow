@@ -9,7 +9,14 @@ type ThemeProviderProps = {
 
 const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
   return (
-    <NextThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <NextThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      enableColorScheme
+      disableTransitionOnChange
+      storageKey="levitasflow:theme"
+    >
       {children}
     </NextThemeProvider>
   );

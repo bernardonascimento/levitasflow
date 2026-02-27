@@ -18,7 +18,7 @@ type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps): JSX.Element => {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className="antialiased transition-colors">
+      <body className="antialiased">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>
