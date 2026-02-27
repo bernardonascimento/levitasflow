@@ -8,20 +8,20 @@ const BenefitsSection = (): JSX.Element => {
 
   return (
     <Section>
-      <h2 className="mb-6 text-2xl font-bold tracking-tight md:text-3xl">
+      <h2 className="mb-6 text-2xl font-bold tracking-tight text-[color:var(--text)] md:text-3xl">
         {translate("landing.benefits.title")}
       </h2>
       <ul className="grid gap-3 md:grid-cols-2">
-        <li className="rounded-xl border border-slate-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900">
+        <li className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-sm text-[color:var(--text)] shadow-[var(--shadow)]">
           {translate("landing.benefits.item1")}
         </li>
-        <li className="rounded-xl border border-slate-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900">
+        <li className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-sm text-[color:var(--text)] shadow-[var(--shadow)]">
           {translate("landing.benefits.item2")}
         </li>
-        <li className="rounded-xl border border-slate-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900">
+        <li className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-sm text-[color:var(--text)] shadow-[var(--shadow)]">
           {translate("landing.benefits.item3")}
         </li>
-        <li className="rounded-xl border border-slate-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900">
+        <li className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-sm text-[color:var(--text)] shadow-[var(--shadow)]">
           {translate("landing.benefits.item4")}
         </li>
       </ul>

@@ -19,7 +19,7 @@ const DifferentialsSection = (): JSX.Element => {
         <Card>
           <div className="flex items-center justify-between gap-2">
             <p className="text-sm font-semibold">{translate("landing.differentials.item3")}</p>
-            <span className="rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-700 dark:bg-orange-950 dark:text-orange-200">
+            <span className="rounded-full border border-[color:var(--border)] bg-[color:var(--surface2)] px-2 py-1 text-xs font-semibold text-[color:var(--accent)]">
               {translate("common.labels.soon")}
             </span>
           </div>

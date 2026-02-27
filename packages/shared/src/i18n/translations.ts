@@ -33,11 +33,14 @@ export const translations = {
       },
       hero: {
         eyebrow: "Plataforma de adoração viva",
-        title: "Organize seu ministério. Sirva com mais paz.",
+        title: "Organize seu ministério. Sirva com excelência.",
         subtitle:
           "Escalas, agenda, repertório e notificações em um só lugar para sua equipe focar no que importa.",
         supporting:
           "Uma experiência pensada para o altar: menos ruído operacional e mais espaço para um culto fluido, criativo e espiritual.",
+        chips: {
+          platform: "iOS / Android / Web"
+        },
         images: {
           mainAlt: "Banda de louvor em ensaio com iluminação de palco"
         },
@@ -55,21 +58,46 @@ export const translations = {
         }
       },
       benefits: {
+        kicker: "Feito para ministérios em movimento",
         title: "Feito para ministérios que precisam de clareza",
-        item1: "Notificações automáticas da escala para evitar esquecimentos.",
-        item2: "Avisos rápidos de indisponibilidade para reagir a tempo.",
-        item3: "Visão por domingo com tudo que será necessário no culto.",
-        item4: "Menos correria no WhatsApp e mais organização no ministério."
+        subtitle:
+          "Do líder ao time inteiro: agenda, escalas, repertório e comunicação fluindo com previsibilidade em cada culto.",
+        card1: {
+          title: "Escalas sem estresse",
+          description: "Monte escalas em minutos, com rodízio justo e histórico claro por função.",
+          micro: "O líder ganha tempo."
+        },
+        card2: {
+          title: "Confirmação e faltas sob controle",
+          description:
+            "Resposta rápida (Confirmo / Não posso) com avisos automáticos de indisponibilidade.",
+          micro: "Menos furos, mais previsibilidade."
+        },
+        card3: {
+          title: "Repertório e culto na mesma página",
+          description:
+            "Repertório, links e anotações no mesmo fluxo para todo mundo chegar preparado.",
+          micro: "Ensaio mais leve."
+        },
+        card4: {
+          title: "Comunicação que não vira caos",
+          description: "Avisos e lembretes no momento certo, sem depender de correria no WhatsApp.",
+          micro: "O time se alinha."
+        }
       },
       features: {
+        kicker: "Mosaico de recursos",
         title: "Funcionalidades essenciais",
         subtitle:
           "Cada recurso foi desenhado para sustentar o ritmo do seu ministério com clareza, colaboração e direção.",
+        mosaicMainTitle: "Escalas e agenda com visão editorial do seu domingo",
+        mosaicMainBody:
+          "Organize quem serve, quando serve e o que precisa estar pronto para cada celebração sem ruído operacional.",
         images: {
-          alt1: "Banda de louvor durante ministracao",
-          alt2: "Músicos ajustando instrumentos em ensaio",
-          alt3: "Vocalista em palco com luzes de adoração",
-          alt4: "Guitarra em primeiro plano com iluminação de igreja"
+          alt1: "Teclas de piano em ensaio de louvor",
+          alt2: "Vocalista ministrando em um palco com iluminação quente",
+          alt3: "Microfone em close com luzes de palco",
+          alt4: "Banda ensaiando em conjunto"
         },
         scales: "Escalas",
         agenda: "Agenda",
@@ -77,11 +105,17 @@ export const translations = {
         repertoire: "Repertório",
         membersRoles: "Membros e Funções",
         aiSuggestions: "IA de Sugestões",
+        repertoireBody: "Repertório vivo com contexto por culto, tom e momento da liturgia.",
+        membersRolesBody:
+          "Permissões claras, funções organizadas e comunicação por equipe sem confusão.",
+        aiSuggestionsBody:
+          "A IA sugere repertório com base nas músicas já cadastradas no seu ministério.",
         groupControl: "Controle de Grupos",
         ministryNotices: "Avisos do Ministério",
         ministryRoadmap: "Roadmap do Ministério"
       },
       differentials: {
+        kicker: "Diferenciais de operação",
         title: "Diferenciais LevitasFlow",
         item1: "IA de sugestões baseada no repertório cadastrado.",
         item2: "Confirmação de escala com resposta rápida: Confirmo / Não posso.",
@@ -89,45 +123,58 @@ export const translations = {
         item4: "Regras de rotação justa com histórico de escala."
       },
       pricing: {
+        kicker: "Planos",
         title: "Planos para cada fase do ministério",
         subtitle:
           "Escolha o plano que acompanha o momento da sua equipe e libera vocês para focar no que realmente importa: ministrar.",
+        monthly: "mensal",
         free: {
           name: "Começar",
-          emotional: "Perfeito para dar os primeiros passos com organização e paz.",
-          item1: "1 grupo",
-          item2: "7 membros",
-          item3: "2 projetos multitrack"
+          emotional:
+            "Perfeito para dar os primeiros passos com organização, clareza e constância no cuidado do seu time.",
+          price: "R$ 0,00",
+          anchor: "Gratuito",
+          item1: "1 Grupo",
+          item2: "Até 7 membros",
+          item3: "2 Projetos Multitrack"
         },
         bronze: {
           name: "Essencial",
           emotional:
             "Para ministérios em crescimento que precisam de constância no cuidado da equipe.",
-          item1: "1 grupo",
-          item2: "15 membros",
-          item3: "10 projetos multitrack"
+          price: "R$ 19,90",
+          anchor: "Para equipes em crescimento",
+          item1: "1 Grupo",
+          item2: "Até 25 membros",
+          item3: "50 Projetos Multitrack"
         },
         silver: {
           name: "Avançado",
           emotional:
             "O plano ideal para equipes ativas que querem excelência sem perder sensibilidade.",
-          item1: "3 grupos",
-          item2: "50 membros",
-          item3: "100 projetos multitrack"
+          price: "R$ 39,90",
+          anchor: "Mais escolhido por ministérios ativos",
+          item1: "3 Grupos",
+          item2: "Até 50 membros",
+          item3: "100 Projetos Multitrack"
         },
         gold: {
           name: "Ilimitado",
           emotional:
             "Estrutura completa para ministérios que sonham grande e servem com profundidade.",
+          price: "R$ 59,90",
+          anchor: "Para múltiplas equipes e operações",
           item1: "Grupos ilimitados",
-          item2: "100 membros",
-          item3: "Multitracks ilimitadas"
-        }
+          item2: "Até 100 membros",
+          item3: "Projetos Multitrack ilimitados"
+        },
+        noCard: "Sem cartão de crédito"
       },
       finalCta: {
         title: "Pronto para elevar o nível do seu ministério?"
       },
       footer: {
+        copyright: "© 2026 LevitasFlow",
         terms: "Termos",
         privacy: "Privacidade"
       }
@@ -186,11 +233,14 @@ export const translations = {
       },
       hero: {
         eyebrow: "A living worship platform",
-        title: "Organize your ministry. Serve with more peace.",
+        title: "Organize your ministry. Serve with excellence.",
         subtitle:
           "Schedules, calendar, repertoire and notifications in one place so your team can focus on what matters.",
         supporting:
           "Built for the platform, not the office: less operational noise and more room for a fluid, creative and spiritual worship experience.",
+        chips: {
+          platform: "iOS / Android / Web"
+        },
         images: {
           mainAlt: "Worship band rehearsing under stage lighting"
         },
@@ -208,21 +258,44 @@ export const translations = {
         }
       },
       benefits: {
+        kicker: "Built for ministries in motion",
         title: "Built for ministries that need clarity",
-        item1: "Automatic schedule notifications to avoid missed commitments.",
-        item2: "Fast unavailability alerts to react on time.",
-        item3: "Sunday view with everything needed for the service.",
-        item4: "Less chaos in WhatsApp and more ministry organization."
+        subtitle:
+          "From leaders to the whole team: calendar, schedules, repertoire and communication running with predictable clarity.",
+        card1: {
+          title: "Stress-free schedules",
+          description: "Build schedules in minutes with fair rotation and clear role history.",
+          micro: "Leaders save time."
+        },
+        card2: {
+          title: "Confirmations and absences under control",
+          description: "Quick responses (I can / I can't) plus automatic unavailability alerts.",
+          micro: "Fewer gaps, more predictability."
+        },
+        card3: {
+          title: "Repertoire and service in one place",
+          description: "Songs, links and notes in one flow so everyone arrives ready.",
+          micro: "Lighter rehearsals."
+        },
+        card4: {
+          title: "Communication without chaos",
+          description: "Notices and reminders at the right time without WhatsApp overload.",
+          micro: "The whole team stays aligned."
+        }
       },
       features: {
+        kicker: "Feature mosaic",
         title: "Core features",
         subtitle:
           "Every feature is crafted to support your ministry rhythm with clarity, collaboration and direction.",
+        mosaicMainTitle: "Schedules and calendar with a clear Sunday overview",
+        mosaicMainBody:
+          "Organize who serves, when they serve and what must be ready for each service with less operational noise.",
         images: {
-          alt1: "Worship band leading in service",
-          alt2: "Musicians rehearsing and tuning instruments",
-          alt3: "Vocalist on stage with worship lights",
-          alt4: "Instrument close-up with church stage lighting"
+          alt1: "Piano keys during worship rehearsal",
+          alt2: "Vocalist leading on stage with warm lighting",
+          alt3: "Microphone close-up with stage lights",
+          alt4: "Band rehearsing together"
         },
         scales: "Schedules",
         agenda: "Calendar",
@@ -230,11 +303,17 @@ export const translations = {
         repertoire: "Repertoire",
         membersRoles: "Members and Roles",
         aiSuggestions: "AI Suggestions",
+        repertoireBody: "Living repertoire with context by service, key and liturgy moment.",
+        membersRolesBody:
+          "Clear permissions, structured roles and team communication without friction.",
+        aiSuggestionsBody:
+          "AI suggests songs based on the repertoire already registered by your ministry.",
         groupControl: "Group Control",
         ministryNotices: "Ministry Notices",
         ministryRoadmap: "Ministry Roadmap"
       },
       differentials: {
+        kicker: "Operational differentiators",
         title: "LevitasFlow differentiators",
         item1: "AI suggestions based on your registered repertoire.",
         item2: "Schedule confirmation with quick responses: I can / I can't.",
@@ -242,42 +321,55 @@ export const translations = {
         item4: "Fair rotation rules with schedule history."
       },
       pricing: {
+        kicker: "Plans",
         title: "Plans for every ministry stage",
         subtitle:
           "Choose the plan that fits your team season and frees your focus for what matters most: worship.",
+        monthly: "monthly",
         free: {
           name: "Start",
-          emotional: "Ideal to start with clarity and calm in your weekly flow.",
-          item1: "1 group",
-          item2: "7 members",
-          item3: "2 multitrack projects"
+          emotional:
+            "Ideal to start with clarity, organization and a consistent weekly rhythm for your team care.",
+          price: "R$ 0.00",
+          anchor: "Free",
+          item1: "1 Group",
+          item2: "Up to 7 members",
+          item3: "2 Multitrack Projects"
         },
         bronze: {
           name: "Essential",
           emotional: "For growing ministries that need consistency in team care.",
-          item1: "1 group",
-          item2: "15 members",
-          item3: "10 multitrack projects"
+          price: "R$ 19.90",
+          anchor: "For growing teams",
+          item1: "1 Group",
+          item2: "Up to 25 members",
+          item3: "50 Multitrack Projects"
         },
         silver: {
           name: "Advanced",
           emotional: "The perfect plan for active teams seeking excellence with sensitivity.",
-          item1: "3 groups",
-          item2: "50 members",
-          item3: "100 multitrack projects"
+          price: "R$ 39.90",
+          anchor: "Most selected by active ministries",
+          item1: "3 Groups",
+          item2: "Up to 50 members",
+          item3: "100 Multitrack Projects"
         },
         gold: {
           name: "Unlimited",
           emotional: "Full structure for ministries that dream big and serve deeply.",
+          price: "R$ 59.90",
+          anchor: "For multiple teams and operations",
           item1: "Unlimited groups",
-          item2: "100 members",
-          item3: "Unlimited multitracks"
-        }
+          item2: "Up to 100 members",
+          item3: "Unlimited Multitrack Projects"
+        },
+        noCard: "No credit card required"
       },
       finalCta: {
         title: "Ready to level up your ministry?"
       },
       footer: {
+        copyright: "© 2026 LevitasFlow",
         terms: "Terms",
         privacy: "Privacy"
       }

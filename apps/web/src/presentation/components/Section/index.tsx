@@ -15,15 +15,17 @@ const Section = forwardRef<HTMLElement, SectionProps>(
       <section
         ref={ref}
         id={id}
-        className={`mx-auto w-full max-w-6xl px-6 py-14 md:px-8 ${className}`}
+        className={`mx-auto w-full max-w-6xl px-6 py-16 md:px-8 md:py-20 ${className}`}
       >
         {(title || subtitle) && (
           <header className="mb-8 max-w-2xl space-y-2">
             {title ? (
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-[color:var(--text)] md:text-3xl">
+                {title}
+              </h2>
             ) : null}
             {subtitle ? (
-              <p className="text-sm text-slate-600 dark:text-slate-300">{subtitle}</p>
+              <p className="text-sm text-[color:var(--muted)] md:text-base">{subtitle}</p>
             ) : null}
           </header>
         )}

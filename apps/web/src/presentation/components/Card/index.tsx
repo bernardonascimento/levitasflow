@@ -8,7 +8,7 @@ type CardProps = {
 const Card = ({ children, className = "" }: CardProps): JSX.Element => {
   return (
     <div
-      className={`rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 ${className}`}
+      className={`rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5 text-[color:var(--text)] shadow-[var(--shadow)] backdrop-blur-sm ${className}`}
     >
       {children}
     </div>

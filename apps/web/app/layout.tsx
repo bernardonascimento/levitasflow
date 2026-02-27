@@ -5,7 +5,10 @@ import AppProviders from "@web/presentation/providers/AppProviders";
 
 export const metadata: Metadata = {
   title: "LevitasFlow",
-  description: "Organize seu ministério com mais paz."
+  description: "Organize seu ministério com excelência.",
+  icons: {
+    icon: "/icon.svg"
+  }
 };
 
 type RootLayoutProps = {
@@ -15,7 +18,7 @@ type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps): JSX.Element => {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className="bg-slate-50 text-slate-900 antialiased transition-colors dark:bg-slate-950 dark:text-slate-100">
+      <body className="antialiased transition-colors">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>
