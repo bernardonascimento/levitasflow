@@ -87,6 +87,103 @@ html.dark .landing-root::before {
   opacity: 0.08;
 }
 
+.auth-root {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.auth-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+html.dark .auth-root::before {
+  opacity: 0.08;
+}
+
+@keyframes auth-button-glow {
+  0%,
+  100% {
+    box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 44%, transparent);
+  }
+  50% {
+    box-shadow: 0 14px 38px color-mix(in srgb, var(--accent) 52%, transparent);
+  }
+}
+
+.auth-card .auth-primary-btn {
+  animation: auth-button-glow 3s ease-in-out infinite;
+}
+
+@keyframes app-upgrade-glow {
+  0%,
+  100% {
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 34%, transparent);
+  }
+  50% {
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+}
+
+.app-upgrade-btn {
+  animation: app-upgrade-glow 3s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface2) 0%,
+    color-mix(in srgb, var(--surface2) 80%, var(--border)) 50%,
+    var(--surface2) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes app-upgrade-btn-shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.app-upgrade-btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  animation: app-upgrade-btn-shine 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .hero-shell {
   border: 1px solid var(--border);
   background:
@@ -446,6 +543,10 @@ html.dark .clarity-feature-pattern {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .auth-card .auth-primary-btn {
+    animation: none;
   }
 
   .clarity-ambient-animate {

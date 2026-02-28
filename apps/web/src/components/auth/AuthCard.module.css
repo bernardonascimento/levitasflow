@@ -1,0 +1,124 @@
+/* Scoped to auth card only – does not affect landing or global styles */
+
+.card {
+  box-shadow:
+    var(--shadow),
+    0 0 0 1px color-mix(in srgb, var(--hero-card-border) 80%, transparent);
+  transition:
+    transform 250ms ease,
+    box-shadow 280ms ease,
+    border-color 250ms ease;
+}
+
+.cardInner {
+  animation: auth-card-float 7s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.cardAtmosphere {
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 90%;
+  height: 80%;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 100% 0%,
+    color-mix(in srgb, var(--accent) 35%, transparent) 0%,
+    transparent 55%
+  );
+  opacity: 0.1;
+  filter: blur(100px);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 0 0 48px color-mix(in srgb, var(--accent) 18%, transparent);
+  opacity: 0.7;
+  animation: auth-card-glow 5s ease-in-out infinite;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    color-mix(in srgb, #ffffff 12%, transparent) 38%,
+    color-mix(in srgb, var(--accent) 8%, transparent) 52%,
+    transparent 100%
+  );
+  opacity: 0.12;
+  transform: translateX(-100%);
+  animation: auth-card-shimmer 9s ease-in-out infinite;
+  transition: opacity 280ms ease;
+}
+
+@keyframes auth-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    var(--shadow),
+    0 0 0 1px color-mix(in srgb, var(--hero-card-border) 95%, var(--accent) 18%),
+    0 0 56px color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--hero-card-border) 88%, var(--accent) 22%);
+}
+
+.card:hover::before {
+  opacity: 0.35;
+}
+
+.card:hover::after {
+  opacity: 0.95;
+}
+
+@keyframes auth-card-glow {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes auth-card-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardInner,
+  .card::before,
+  .card::after {
+    animation: none !important;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+  }
+}

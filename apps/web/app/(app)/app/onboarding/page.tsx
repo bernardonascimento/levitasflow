@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@web/lib/supabase/server";
 import { getUserMinistries } from "@web/lib/ministry/queries";
-import MinistryOnboardingCard from "@web/presentation/components/app/MinistryOnboardingCard";
+import WelcomeDashboard from "@web/presentation/components/app/WelcomeDashboard";
 
 const AppOnboardingPage = async (): Promise<JSX.Element> => {
   const supabase = await createSupabaseServerClient();
@@ -14,15 +14,12 @@ const AppOnboardingPage = async (): Promise<JSX.Element> => {
   }
 
   const ministries = await getUserMinistries(supabase, user.id);
+
   if (ministries.length > 0) {
     redirect("/app");
   }
 
-  return (
-    <main className="flex min-h-[70vh] items-center justify-center p-2">
-      <MinistryOnboardingCard />
-    </main>
-  );
+  return <WelcomeDashboard />;
 };
 
 export default AppOnboardingPage;

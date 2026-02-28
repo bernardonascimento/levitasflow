@@ -13,6 +13,7 @@ export const translations = {
         choosePlan: "Escolher plano",
         viewHowItWorks: "Ver como funciona",
         enter: "Entrar",
+        backToHome: "Voltar para a página inicial",
         seeMore: "Ver mais",
         seeLess: "Ver menos"
       },
@@ -180,16 +181,27 @@ export const translations = {
       }
     },
     auth: {
-      loginTitle: "Bem-vindo de volta",
+      loginTitle: "Entre para acessar seu ministério",
       loginSubtitle: "Acesse sua conta para continuar organizando seu ministério.",
-      signupTitle: "Crie sua conta",
-      signupSubtitle: "Comece grátis e monte seu workspace ministerial em minutos.",
+      signupTitle: "Crie seu ministério gratuitamente",
+      signupSubtitle: "Leva menos de 2 minutos.",
+      branding: {
+        title: "Seu ministério começa aqui",
+        description: "Organize escalas, repertórios e a comunicação do seu time em um só lugar.",
+        bullet1: "Escalas automáticas",
+        bullet2: "Confirmação de presença",
+        bullet3: "Avisos para toda a equipe"
+      },
       emailLabel: "E-mail",
       passwordLabel: "Senha",
+      confirmPasswordLabel: "Confirmar senha",
       emailPlaceholder: "voce@igreja.org",
       passwordPlaceholder: "Digite sua senha",
+      confirmPasswordPlaceholder: "Repita a senha",
+      passwordMismatch: "As senhas não coincidem.",
       loginCta: "Entrar",
       signupCta: "Criar conta",
+      googleContinue: "Continuar com Google",
       googleLoginCta: "Entrar com Google",
       googleSignupCta: "Cadastrar com Google",
       forgotPassword: "Esqueci minha senha",
@@ -235,7 +247,42 @@ export const translations = {
         namePlaceholder: "Ministério de Música da IPFF",
         submit: "Criar ministério",
         helper: "Você poderá criar equipes, cadastrar membros e organizar funções logo em seguida."
-      }
+      },
+      workspace: {
+        noMinistry: "Sem ministério",
+        createNow: "Criar agora"
+      },
+      search: {
+        placeholder: "Buscar músicas, membros, escalas…"
+      },
+      welcome: {
+        heroTitle: "Crie seu ministério",
+        heroSubtitle:
+          "Seu workspace começa aqui. Dê um nome e comece a organizar equipes, escalas e repertório.",
+        nextSteps: {
+          team: "Criar equipe",
+          teamDesc: "Organize grupos e funções",
+          members: "Cadastrar membros",
+          membersDesc: "Adicione sua equipe",
+          firstSchedule: "Primeira escala",
+          firstScheduleDesc: "Monte sua primeira escala"
+        }
+      },
+      upgradeCard: {
+        title: "Planos",
+        titleElevate: "Elevar seu ministério",
+        description: "Escolha o plano ideal para o momento do seu ministério.",
+        descriptionAdvanced: "Desbloqueie recursos avançados do seu ministério.",
+        descriptionUnlock: "Desbloqueie automações, escalas ilimitadas e gestão completa.",
+        cta: "Ver planos"
+      },
+      createTeam: "Criar equipe",
+      recentNotices: "Avisos recentes",
+      teamMembers: "Equipe / Membros",
+      emptyScales: "Nenhuma escala próxima",
+      emptyScalesDesc: "Crie sua primeira escala quando estiver pronto.",
+      emptyNotices: "Nenhum aviso recente",
+      emptyNoticesDesc: "Avisos do ministério aparecerão aqui."
     },
     pricingPage: {
       title: "Planos LevitasFlow",
@@ -276,6 +323,7 @@ export const translations = {
         choosePlan: "Choose plan",
         viewHowItWorks: "See how it works",
         enter: "Sign in",
+        backToHome: "Back to home",
         seeMore: "See more",
         seeLess: "See less"
       },
@@ -438,16 +486,27 @@ export const translations = {
       }
     },
     auth: {
-      loginTitle: "Welcome back",
+      loginTitle: "Sign in to access your ministry",
       loginSubtitle: "Sign in to keep your ministry workflow running.",
-      signupTitle: "Create your account",
-      signupSubtitle: "Start free and set up your ministry workspace in minutes.",
+      signupTitle: "Create your ministry for free",
+      signupSubtitle: "Takes less than 2 minutes.",
+      branding: {
+        title: "Your ministry starts here",
+        description: "Organize schedules, repertoire and your team communication in one place.",
+        bullet1: "Automatic schedules",
+        bullet2: "Attendance confirmation",
+        bullet3: "Notices for the whole team"
+      },
       emailLabel: "Email",
       passwordLabel: "Password",
+      confirmPasswordLabel: "Confirm password",
       emailPlaceholder: "you@church.org",
       passwordPlaceholder: "Enter your password",
+      confirmPasswordPlaceholder: "Repeat password",
+      passwordMismatch: "Passwords do not match.",
       loginCta: "Sign in",
       signupCta: "Create account",
+      googleContinue: "Continue with Google",
       googleLoginCta: "Sign in with Google",
       googleSignupCta: "Sign up with Google",
       forgotPassword: "Forgot your password",
@@ -492,7 +551,42 @@ export const translations = {
         namePlaceholder: "IPFF Worship Ministry",
         submit: "Create ministry",
         helper: "Then you can add teams, register members, and organize roles."
-      }
+      },
+      workspace: {
+        noMinistry: "No ministry",
+        createNow: "Create now"
+      },
+      search: {
+        placeholder: "Search songs, members, schedules…"
+      },
+      welcome: {
+        heroTitle: "Create your ministry",
+        heroSubtitle:
+          "Your workspace starts here. Give it a name and start organizing teams, schedules and repertoire.",
+        nextSteps: {
+          team: "Create team",
+          teamDesc: "Organize groups and roles",
+          members: "Register members",
+          membersDesc: "Add your team",
+          firstSchedule: "First schedule",
+          firstScheduleDesc: "Build your first schedule"
+        }
+      },
+      upgradeCard: {
+        title: "Plans",
+        titleElevate: "Elevate your ministry",
+        description: "Choose the right plan for your ministry stage.",
+        descriptionAdvanced: "Unlock advanced features for your ministry.",
+        descriptionUnlock: "Unlock automation, unlimited schedules and full management.",
+        cta: "View plans"
+      },
+      createTeam: "Create team",
+      recentNotices: "Recent notices",
+      teamMembers: "Team / Members",
+      emptyScales: "No upcoming schedules",
+      emptyScalesDesc: "Create your first schedule when you're ready.",
+      emptyNotices: "No recent notices",
+      emptyNoticesDesc: "Ministry notices will appear here."
     },
     pricingPage: {
       title: "LevitasFlow Plans",

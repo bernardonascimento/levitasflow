@@ -2,11 +2,10 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@web/lib/supabase/server";
 import { getUserMinistries, linkMemberIfNeeded } from "@web/lib/ministry/queries";
 import DashboardPageClient from "@web/presentation/components/app/DashboardPageClient";
+import WelcomeDashboard from "@web/presentation/components/app/WelcomeDashboard";
 
 type AppDashboardPageProps = {
-  searchParams?: {
-    ministry?: string;
-  };
+  searchParams?: { ministry?: string };
 };
 
 const AppDashboardPage = async ({ searchParams }: AppDashboardPageProps): Promise<JSX.Element> => {
@@ -20,24 +19,23 @@ const AppDashboardPage = async ({ searchParams }: AppDashboardPageProps): Promis
   }
 
   const ministries = await getUserMinistries(supabase, user.id);
+
   if (ministries.length === 0) {
-    redirect("/app/onboarding");
+    return <WelcomeDashboard />;
   }
 
   await linkMemberIfNeeded(
     supabase,
     user.id,
     user.email?.toLowerCase() ?? "",
-    ministries.map((ministry) => ministry.id)
+    ministries.map((m) => m.id)
   );
 
   const selectedMinistry =
-    ministries.find((ministry) => ministry.id === searchParams?.ministry) ??
-    ministries.at(0) ??
-    null;
+    ministries.find((m) => m.id === searchParams?.ministry) ?? ministries[0] ?? null;
 
   if (!selectedMinistry) {
-    redirect("/app/onboarding");
+    return <WelcomeDashboard />;
   }
 
   const [{ count: teamsCount }, { count: membersCount }, { count: rolesCount }, { data: teams }] =
@@ -58,14 +56,13 @@ const AppDashboardPage = async ({ searchParams }: AppDashboardPageProps): Promis
     ]);
 
   let pendingInvitesCount = 0;
-  const teamIds = (teams ?? []).map((team: { id: string }) => team.id);
+  const teamIds = (teams ?? []).map((t: { id: string }) => t.id);
   if (teamIds.length > 0) {
     const { count } = await supabase
       .from("team_members")
       .select("team_id", { count: "exact", head: true })
       .in("team_id", teamIds)
       .eq("status", "invited");
-
     pendingInvitesCount = count ?? 0;
   }
 

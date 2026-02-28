@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 import LanguageSelector from "@web/presentation/components/LanguageSelector";
 import ThemeToggle from "@web/presentation/components/ThemeToggle";
 
 const PublicTopbar = (): JSX.Element => {
   const { translate } = useAppLanguage();
+  const pathname = usePathname();
+  const hidePlansLink = pathname === "/login" || pathname === "/signup";
 
   return (
     <>
@@ -43,17 +46,20 @@ const PublicTopbar = (): JSX.Element => {
             {translate("common.appName")}
           </Link>
 
-          <nav
-            aria-label="Navegação principal"
-            className="hidden items-center justify-self-center gap-8 text-sm font-semibold text-[color:var(--muted)] lg:flex"
-          >
-            <Link
-              href="/pricing"
-              className="rounded-md transition-colors hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+          {hidePlansLink ? <div aria-hidden className="hidden lg:block" /> : null}
+          {!hidePlansLink ? (
+            <nav
+              aria-label="Navegação principal"
+              className="hidden items-center justify-self-center gap-8 text-sm font-semibold text-[color:var(--muted)] lg:flex"
             >
-              {translate("landing.header.plans")}
-            </Link>
-          </nav>
+              <Link
+                href="/pricing"
+                className="rounded-md transition-colors hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
+              >
+                {translate("landing.header.plans")}
+              </Link>
+            </nav>
+          ) : null}
 
           <div className="flex items-center justify-self-end gap-2">
             <ThemeToggle />
