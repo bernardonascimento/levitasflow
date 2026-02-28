@@ -7,6 +7,8 @@ import Button from "@web/presentation/components/Button";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 
 type PlanId = "free" | "bronze" | "silver" | "gold";
+type PlanMainField = "name" | "emotional" | "price";
+type PlanItemField = 1 | 2 | 3;
 
 const plans: ReadonlyArray<{ id: PlanId; popular?: boolean }> = [
   { id: "free" },
@@ -14,6 +16,26 @@ const plans: ReadonlyArray<{ id: PlanId; popular?: boolean }> = [
   { id: "silver", popular: true },
   { id: "gold" }
 ];
+
+const getPlanMainKey = <Field extends PlanMainField>(
+  planId: PlanId,
+  field: Field
+): Extract<TranslationKey, `landing.pricing.${PlanId}.${Field}`> => {
+  return `landing.pricing.${planId}.${field}` as Extract<
+    TranslationKey,
+    `landing.pricing.${PlanId}.${Field}`
+  >;
+};
+
+const getPlanItemKey = (
+  planId: PlanId,
+  field: PlanItemField
+): Extract<TranslationKey, `landing.pricing.${PlanId}.item${PlanItemField}`> => {
+  return `landing.pricing.${planId}.item${field}` as Extract<
+    TranslationKey,
+    `landing.pricing.${PlanId}.item${PlanItemField}`
+  >;
+};
 
 const Pricing = (): JSX.Element => {
   const { translate } = useAppLanguage();
@@ -47,7 +69,7 @@ const Pricing = (): JSX.Element => {
             <div className="flex h-full flex-col">
               <div className="flex items-start justify-between gap-2">
                 <h3 className="text-2xl font-black tracking-tight text-[color:var(--text)]">
-                  {translate(`landing.pricing.${plan.id}.name`)}
+                  {translate(getPlanMainKey(plan.id, "name"))}
                 </h3>
                 {plan.popular ? (
                   <span className="whitespace-nowrap rounded-full border border-[color:var(--accent)]/60 bg-gradient-to-r from-[color:var(--accent)]/18 to-[color:var(--accent2)]/18 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.08em] text-[color:var(--accent)] shadow-[0_0_16px_rgba(255,90,31,0.24)]">
@@ -57,12 +79,12 @@ const Pricing = (): JSX.Element => {
               </div>
 
               <p className="mt-1 text-sm text-[color:var(--muted)]">
-                {translate(`landing.pricing.${plan.id}.emotional`)}
+                {translate(getPlanMainKey(plan.id, "emotional"))}
               </p>
 
               <div className="mt-8 text-center">
                 <p className="text-[2rem] font-black leading-none tracking-tight text-[color:var(--text)] md:text-[2.2rem]">
-                  {translate(`landing.pricing.${plan.id}.price`)}
+                  {translate(getPlanMainKey(plan.id, "price"))}
                 </p>
                 <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-[color:var(--muted)]">
                   {translate("landing.pricing.monthly")}
@@ -71,7 +93,7 @@ const Pricing = (): JSX.Element => {
 
               <ul className="mt-8 space-y-3 text-sm text-[color:var(--text)]">
                 {[1, 2, 3].map((itemIndex) => {
-                  const key = `landing.pricing.${plan.id}.item${itemIndex}` as TranslationKey;
+                  const key = getPlanItemKey(plan.id, itemIndex as PlanItemField);
 
                   return (
                     <li key={`${plan.id}-${itemIndex}`} className="flex items-center gap-3">

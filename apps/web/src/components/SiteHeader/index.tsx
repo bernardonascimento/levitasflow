@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 import LanguageSelector from "@web/presentation/components/LanguageSelector";
 import ThemeToggle from "@web/presentation/components/ThemeToggle";
@@ -8,6 +9,7 @@ import ThemeToggle from "@web/presentation/components/ThemeToggle";
 const SiteHeader = (): JSX.Element => {
   const { translate } = useAppLanguage();
   const reduceMotion = useReducedMotion();
+  const router = useRouter();
 
   return (
     <>
@@ -73,6 +75,7 @@ const SiteHeader = (): JSX.Element => {
             <LanguageSelector />
             <motion.button
               type="button"
+              onClick={() => router.push("/login")}
               whileHover={reduceMotion ? undefined : { y: -1 }}
               whileTap={reduceMotion ? undefined : { scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}

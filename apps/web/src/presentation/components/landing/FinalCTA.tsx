@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import Button from "@web/presentation/components/Button";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 
 const FinalCTA = (): JSX.Element => {
   const { translate } = useAppLanguage();
   const reduceMotion = useReducedMotion();
+  const router = useRouter();
 
   return (
     <section className="mx-auto w-full max-w-[78rem] px-5 py-14 md:px-8 md:py-20">
@@ -25,7 +27,9 @@ const FinalCTA = (): JSX.Element => {
           whileTap={{ scale: 0.98 }}
           className="mt-7 inline-flex"
         >
-          <Button className="px-7">{translate("common.actions.createFreeAccount")}</Button>
+          <Button className="px-7" onClick={() => router.push("/signup")}>
+            {translate("common.actions.createFreeAccount")}
+          </Button>
         </motion.div>
       </motion.div>
     </section>

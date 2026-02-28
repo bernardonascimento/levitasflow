@@ -179,6 +179,69 @@ export const translations = {
         privacy: "Privacidade"
       }
     },
+    auth: {
+      loginTitle: "Bem-vindo de volta",
+      loginSubtitle: "Acesse sua conta para continuar organizando seu ministério.",
+      signupTitle: "Crie sua conta",
+      signupSubtitle: "Comece grátis e monte seu workspace ministerial em minutos.",
+      emailLabel: "E-mail",
+      passwordLabel: "Senha",
+      emailPlaceholder: "voce@igreja.org",
+      passwordPlaceholder: "Digite sua senha",
+      loginCta: "Entrar",
+      signupCta: "Criar conta",
+      googleLoginCta: "Entrar com Google",
+      googleSignupCta: "Cadastrar com Google",
+      forgotPassword: "Esqueci minha senha",
+      noAccount: "Não tem conta?",
+      createAccount: "Criar nova conta",
+      hasAccount: "Já tem conta?",
+      doLogin: "Fazer login",
+      resetPasswordSent: "Enviamos o link de recuperação para seu e-mail.",
+      signupSuccess:
+        "Conta criada com sucesso. Se necessário, confirme seu e-mail para finalizar o acesso.",
+      genericError: "Não foi possível concluir a ação. Tente novamente em instantes."
+    },
+    dashboard: {
+      title: "Visão Geral",
+      subtitle: "Acompanhe seu ministério com clareza e previsibilidade.",
+      chooseMinistry: "Ministério",
+      nextSchedule: "Próxima escala",
+      nextSchedulePlaceholder: "Domingo, 19h · Louvor principal (placeholder)",
+      cards: {
+        teams: "Equipes",
+        members: "Membros",
+        activeRoles: "Funções ativas",
+        pendingInvites: "Convites pendentes"
+      },
+      sidebar: {
+        overview: "Visão Geral",
+        agenda: "Agenda",
+        notices: "Avisos",
+        repertoire: "Repertório",
+        unavailable: "Indisponíveis",
+        groups: "Meus Grupos",
+        plans: "Planos"
+      },
+      profile: {
+        settings: "Configurações",
+        profile: "Perfil",
+        logout: "Sair"
+      },
+      onboarding: {
+        title: "Crie seu ministério",
+        subtitle: "Seu primeiro workspace começa com nome e identidade.",
+        nameLabel: "Nome do ministério",
+        namePlaceholder: "Ministério de Música da IPFF",
+        submit: "Criar ministério",
+        helper: "Você poderá criar equipes, cadastrar membros e organizar funções logo em seguida."
+      }
+    },
+    pricingPage: {
+      title: "Planos LevitasFlow",
+      subtitle: "Escolha o plano ideal para o momento do seu ministério.",
+      cta: "Criar conta e começar"
+    },
     onboarding: {
       step1: {
         title: "Seu ministério mais organizado no dia a dia",
@@ -373,6 +436,68 @@ export const translations = {
         terms: "Terms",
         privacy: "Privacy"
       }
+    },
+    auth: {
+      loginTitle: "Welcome back",
+      loginSubtitle: "Sign in to keep your ministry workflow running.",
+      signupTitle: "Create your account",
+      signupSubtitle: "Start free and set up your ministry workspace in minutes.",
+      emailLabel: "Email",
+      passwordLabel: "Password",
+      emailPlaceholder: "you@church.org",
+      passwordPlaceholder: "Enter your password",
+      loginCta: "Sign in",
+      signupCta: "Create account",
+      googleLoginCta: "Sign in with Google",
+      googleSignupCta: "Sign up with Google",
+      forgotPassword: "Forgot your password",
+      noAccount: "No account yet?",
+      createAccount: "Create one",
+      hasAccount: "Already have an account?",
+      doLogin: "Sign in",
+      resetPasswordSent: "We sent a password reset link to your email.",
+      signupSuccess: "Account created. Confirm your email if your project requires verification.",
+      genericError: "We couldn't complete this action. Please try again."
+    },
+    dashboard: {
+      title: "Overview",
+      subtitle: "Track your ministry with clarity and predictability.",
+      chooseMinistry: "Ministry",
+      nextSchedule: "Next schedule",
+      nextSchedulePlaceholder: "Sunday, 7 PM · Main worship team (placeholder)",
+      cards: {
+        teams: "Teams",
+        members: "Members",
+        activeRoles: "Active roles",
+        pendingInvites: "Pending invites"
+      },
+      sidebar: {
+        overview: "Overview",
+        agenda: "Calendar",
+        notices: "Notices",
+        repertoire: "Repertoire",
+        unavailable: "Unavailable",
+        groups: "My Groups",
+        plans: "Plans"
+      },
+      profile: {
+        settings: "Settings",
+        profile: "Profile",
+        logout: "Sign out"
+      },
+      onboarding: {
+        title: "Create your ministry",
+        subtitle: "Your first workspace starts with name and identity.",
+        nameLabel: "Ministry name",
+        namePlaceholder: "IPFF Worship Ministry",
+        submit: "Create ministry",
+        helper: "Then you can add teams, register members, and organize roles."
+      }
+    },
+    pricingPage: {
+      title: "LevitasFlow Plans",
+      subtitle: "Choose the right plan for your ministry stage.",
+      cta: "Create account and start"
     },
     onboarding: {
       step1: {

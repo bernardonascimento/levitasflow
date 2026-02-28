@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import Button from "@web/presentation/components/Button";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
@@ -8,6 +9,7 @@ import HeroMediaCard from "./HeroMediaCard";
 
 const HeroSection = (): JSX.Element => {
   const { translate } = useAppLanguage();
+  const router = useRouter();
 
   const titleParts = useMemo(
     () =>
@@ -39,7 +41,9 @@ const HeroSection = (): JSX.Element => {
             {translate("landing.hero.subtitle")}
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button className="px-7">{translate("common.actions.createFreeAccount")}</Button>
+            <Button className="px-7" onClick={() => router.push("/signup")}>
+              {translate("common.actions.createFreeAccount")}
+            </Button>
             <a href="#features">
               <Button variant="secondary" className="px-7">
                 {translate("common.actions.viewHowItWorks")}
