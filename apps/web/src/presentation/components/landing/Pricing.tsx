@@ -37,12 +37,25 @@ const getPlanItemKey = (
   >;
 };
 
-const Pricing = (): JSX.Element => {
+type PricingMode = "default" | "pricingPage";
+
+type PricingProps = {
+  mode?: PricingMode;
+};
+
+const Pricing = ({ mode = "default" }: PricingProps): JSX.Element => {
   const { translate } = useAppLanguage();
   const reduceMotion = useReducedMotion();
+  const isPricingPage = mode === "pricingPage";
+  const visiblePlans = isPricingPage ? plans.slice(1) : plans;
 
   return (
-    <section id="plans" className="mx-auto w-full max-w-[78rem] px-5 py-14 md:px-8 md:py-20">
+    <section
+      id="plans"
+      className={`mx-auto w-full max-w-[78rem] px-5 md:px-8 ${
+        isPricingPage ? "pb-14 pt-6 md:pb-20 md:pt-10" : "py-14 md:py-20"
+      }`}
+    >
       <header className="mb-8 max-w-3xl">
         <p className="section-kicker">{translate("landing.pricing.kicker")}</p>
         <h2 className="mt-3 text-[clamp(1.9rem,4vw,3.2rem)] font-black leading-[0.96] tracking-tight text-[color:var(--text)]">
@@ -51,8 +64,14 @@ const Pricing = (): JSX.Element => {
         <p className="mt-3 text-[color:var(--muted)]">{translate("landing.pricing.subtitle")}</p>
       </header>
 
-      <div className="grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {plans.map((plan, index) => (
+      <div
+        className={
+          isPricingPage
+            ? "mx-auto grid max-w-[76rem] items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3"
+            : "grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4"
+        }
+      >
+        {visiblePlans.map((plan, index) => (
           <motion.article
             key={plan.id}
             initial={{ opacity: 0, y: 18 }}
@@ -60,7 +79,9 @@ const Pricing = (): JSX.Element => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.48, delay: index * 0.06, ease: "easeOut" }}
             whileHover={reduceMotion ? undefined : { y: -5 }}
-            className={`clarity-feature-card editorial-card h-full min-h-[28rem] rounded-[1.5rem] border border-[color:var(--border)] p-6 ${
+            className={`clarity-feature-card editorial-card h-full rounded-[1.5rem] border border-[color:var(--border)] ${
+              isPricingPage ? "min-h-[30rem] p-7 md:p-8" : "min-h-[28rem] p-6"
+            } ${
               plan.popular
                 ? "pricing-popular border-[color:var(--accent)]/70"
                 : "no-accent-hover border border-[color:var(--border)]"
