@@ -179,7 +179,12 @@ export type Database = {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      create_ministry_for_current_user: {
+        Args: { p_name: string; p_slug: string };
+        Returns: string;
+      };
+    };
     Enums: {
       ministry_user_role: "owner" | "admin" | "member";
       team_member_permission: "admin" | "member";

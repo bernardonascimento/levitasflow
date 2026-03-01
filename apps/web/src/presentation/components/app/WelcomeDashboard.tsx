@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { CalendarDays, LoaderCircle, UserPlus, Users } from "lucide-react";
 import Button from "@web/presentation/components/Button";
 import SurfaceCard from "@web/components/ui/SurfaceCard";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
+import { useMinistries } from "@web/presentation/providers/MinistryProvider";
 import { createSupabaseBrowserClient } from "@web/lib/supabase/browser";
 import { motion } from "framer-motion";
 
@@ -18,8 +18,8 @@ const slugify = (value: string): string =>
     .replace(/(^-|-$)+/g, "");
 
 const WelcomeDashboard = (): JSX.Element => {
-  const router = useRouter();
   const { translate } = useAppLanguage();
+  const { refetchMinistries } = useMinistries();
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -47,15 +47,17 @@ const WelcomeDashboard = (): JSX.Element => {
     for (let attempt = 0; attempt < 5; attempt += 1) {
       const candidateSlug =
         attempt === 0 ? baseSlug : `${baseSlug}-${Math.floor(Math.random() * 9999)}`;
-      const { data: ministryData, error: ministryError } = await supabase
-        .from("ministries")
-        .insert({ name: trimmedName, slug: candidateSlug, owner_user_id: user.id })
-        .select("id")
-        .single();
+      const { data: ministryId, error: rpcError } = await supabase.rpc(
+        "create_ministry_for_current_user",
+        { p_name: trimmedName, p_slug: candidateSlug }
+      );
 
-      if (!ministryError && ministryData?.id) {
-        createdMinistryId = ministryData.id;
+      if (!rpcError && ministryId) {
+        createdMinistryId = ministryId;
         break;
+      }
+      if (rpcError) {
+        console.error("[WelcomeDashboard] Erro ao criar ministério:", rpcError);
       }
     }
 
@@ -65,18 +67,8 @@ const WelcomeDashboard = (): JSX.Element => {
       return;
     }
 
-    const { error: ministryUserError } = await supabase
-      .from("ministry_users")
-      .insert({ ministry_id: createdMinistryId, user_id: user.id, role: "owner" });
-
-    if (ministryUserError) {
-      setError(translate("auth.genericError"));
-      setIsLoading(false);
-      return;
-    }
-
-    router.push(`/app?ministry=${encodeURIComponent(createdMinistryId)}`);
-    router.refresh();
+    setIsLoading(false);
+    await refetchMinistries();
   };
 
   const nextSteps = [

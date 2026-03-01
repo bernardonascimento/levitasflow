@@ -1,40 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { CalendarDays, Bell, Users, Plus } from "lucide-react";
 import Button from "@web/presentation/components/Button";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
+import { useMinistries } from "@web/presentation/providers/MinistryProvider";
 import MemberCreateCard from "@web/presentation/components/app/MemberCreateCard";
+import {
+  getDashboardSummaryAction,
+  type DashboardSummary as DashboardSummaryType
+} from "@web/lib/ministry/actions";
 
-type MinistryOption = {
-  id: string;
-  name: string;
-  slug: string;
-};
-
-type DashboardSummary = {
-  teams: number;
-  members: number;
-  activeRoles: number;
-  pendingInvites: number;
-};
+type DashboardSummary = DashboardSummaryType;
 
 type DashboardCardKey = keyof DashboardSummary;
 
 type DashboardPageClientProps = {
-  ministries: MinistryOption[];
-  selectedMinistryId: string;
-  summary: DashboardSummary;
+  defaultMinistryId: string;
+  initialSummary: DashboardSummary;
 };
 
 const DashboardPageClient = ({
-  ministries,
-  selectedMinistryId,
-  summary
+  defaultMinistryId,
+  initialSummary
 }: DashboardPageClientProps): JSX.Element => {
   const { translate } = useAppLanguage();
   const reduceMotion = useReducedMotion();
-  const selectedMinistry = ministries.find((m) => m.id === selectedMinistryId);
+  const { selectedMinistry, selectedMinistryId } = useMinistries();
+  const [fetchedSummary, setFetchedSummary] = useState<DashboardSummary | null>(null);
+
+  const summary = fetchedSummary ?? initialSummary;
+
+  useEffect(() => {
+    if (!selectedMinistryId) return;
+    let cancelled = false;
+    getDashboardSummaryAction(selectedMinistryId).then((data) => {
+      if (!cancelled) setFetchedSummary(data);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedMinistryId]);
 
   const cardKey = (key: DashboardCardKey): `dashboard.cards.${DashboardCardKey}` =>
     `dashboard.cards.${key}`;
@@ -135,7 +142,9 @@ const DashboardPageClient = ({
           <Users className="h-5 w-5 text-[color:var(--muted)]" />
           {translate("dashboard.teamMembers")}
         </h2>
-        <MemberCreateCard ministryId={selectedMinistryId} />
+        {selectedMinistryId ? (
+          <MemberCreateCard ministryId={selectedMinistryId} />
+        ) : null}
       </motion.section>
     </main>
   );

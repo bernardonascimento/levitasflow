@@ -49,8 +49,10 @@ const UserAvatar = ({ user }: UserAvatarProps): JSX.Element => {
   const { translate } = useAppLanguage();
   const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const avatarUrl = getAvatarUrl(user);
+  const showAvatar = Boolean(avatarUrl) && !imgError;
   const initials = getInitials(user);
   const displayLabel =
     user.user_metadata?.full_name ?? user.user_metadata?.name ?? user.email ?? "";
@@ -83,8 +85,6 @@ const UserAvatar = ({ user }: UserAvatarProps): JSX.Element => {
       <motion.button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        whileHover={reduceMotion ? undefined : { y: -1 }}
-        whileTap={reduceMotion ? undefined : { scale: 0.98 }}
         className="flex items-center gap-1.5 rounded-xl text-[color:var(--text)] transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bg)]"
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -93,14 +93,15 @@ const UserAvatar = ({ user }: UserAvatarProps): JSX.Element => {
           className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-full bg-[color:var(--accent)]/25 text-sm font-bold text-[color:var(--accent)]"
           aria-hidden
         >
-          {avatarUrl ? (
+          {showAvatar ? (
             <Image
-              src={avatarUrl}
+              src={avatarUrl!}
               alt=""
               width={36}
               height={36}
               className="object-cover"
               unoptimized
+              onError={() => setImgError(true)}
             />
           ) : (
             <span className="flex h-full w-full items-center justify-center">{initials}</span>

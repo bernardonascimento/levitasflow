@@ -2,16 +2,12 @@
 
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, Plus } from "lucide-react";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
+import { useMinistries } from "@web/presentation/providers/MinistryProvider";
 import type { UserAvatarUser } from "@web/presentation/components/app/UserAvatar";
 
-export type MinistryOption = {
-  id: string;
-  name: string;
-  slug: string;
-};
+export type { MinistryOption } from "@web/presentation/providers/MinistryProvider";
 
 function getFirstName(user: UserAvatarUser | null): string {
   if (!user) return "";
@@ -28,15 +24,11 @@ function getFirstName(user: UserAvatarUser | null): string {
 
 type WorkspaceSwitcherProps = {
   user: UserAvatarUser | null;
-  ministries: MinistryOption[];
 };
 
-const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.Element => {
+const WorkspaceSwitcher = ({ user }: WorkspaceSwitcherProps): JSX.Element => {
   const { translate } = useAppLanguage();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const selectedId = searchParams?.get("ministry") ?? ministries[0]?.id ?? null;
-  const selected = ministries.find((m) => m.id === selectedId) ?? ministries[0] ?? null;
+  const { ministries, selectedMinistry: selected, selectedMinistryId: selectedId, setSelectedMinistryId } = useMinistries();
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,7 +48,7 @@ const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.El
 
   const setMinistry = (id: string): void => {
     setIsOpen(false);
-    router.push(`/app?ministry=${encodeURIComponent(id)}`);
+    setSelectedMinistryId(id);
   };
 
   if (ministries.length === 0) {
@@ -75,12 +67,12 @@ const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.El
   }
 
   return (
-    <div ref={ref} className="relative">
-      <p className="mb-2 text-xs font-semibold text-[color:var(--muted)]">{welcomeText}</p>
+    <div ref={ref} className="relative min-h-[5.5rem]">
+      <p className="mb-2 text-sm font-semibold text-[color:var(--muted)]">{welcomeText}</p>
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface2)]/70 px-3 py-2.5 text-left text-sm font-semibold text-[color:var(--text)] transition hover:bg-[color:var(--surface2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)]"
+        className="flex w-full items-center justify-between gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface2)]/70 px-3 py-2.5 text-left text-sm font-semibold text-[color:var(--accent)] transition hover:bg-[color:var(--surface2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)]"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
       >
@@ -88,14 +80,14 @@ const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.El
           {selected?.name ?? translate("dashboard.workspace.noMinistry")}
         </span>
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-[color:var(--muted)] transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`h-4 w-4 shrink-0 text-[color:var(--accent)] transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {isOpen ? (
         <ul
           role="listbox"
-          className="absolute left-0 right-0 z-20 mt-1 max-h-56 overflow-auto rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] py-1 shadow-[var(--shadow)]"
+          className="absolute left-0 right-0 z-[100] mt-1 max-h-56 overflow-auto rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] py-1 shadow-[var(--shadow)]"
         >
           {ministries.map((m) => (
             <li key={m.id}>
@@ -106,7 +98,7 @@ const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.El
                 onClick={() => setMinistry(m.id)}
                 className={`w-full px-3 py-2 text-left text-sm font-medium transition ${
                   m.id === selectedId
-                    ? "bg-[color:var(--accent)]/15 text-[color:var(--accent)]"
+                    ? "bg-[color:var(--surface2)] text-[color:var(--text)]"
                     : "text-[color:var(--text)] hover:bg-[color:var(--surface2)]"
                 }`}
               >
@@ -116,6 +108,14 @@ const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.El
           ))}
         </ul>
       ) : null}
+
+      <Link
+        href="/app?new=1"
+        className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-[color:var(--muted)] transition hover:underline"
+      >
+        <Plus className="h-3.5 w-3.5" />
+        {translate("dashboard.workspace.createNewMinistry")}
+      </Link>
     </div>
   );
 };

@@ -5,6 +5,9 @@
   "engines": {
     "node": ">=20.11.1"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["supabase"]
+  },
   "scripts": {
     "dev": "turbo run dev --parallel",
     "dev:web": "turbo run dev --filter=@repo/web",
@@ -16,7 +19,10 @@
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "prepare": "husky",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "supabase": "pnpm exec supabase",
+    "db:push": "pnpm exec supabase db push",
+    "db:link": "pnpm exec supabase link"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -35,6 +41,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
+    "supabase": "^2.76.15",
     "turbo": "^2.5.0",
     "typescript": "^5.8.2"
   },

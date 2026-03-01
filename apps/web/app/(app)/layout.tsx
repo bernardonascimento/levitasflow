@@ -26,11 +26,7 @@ const AppLayout = async ({ children }: AppLayoutProps): Promise<JSX.Element> => 
     user_metadata: user.user_metadata ?? null
   };
 
-  return (
-    <AppShell user={appUser} ministries={ministries}>
-      {children}
-    </AppShell>
-  );
+  return <AppShell user={appUser} ministries={ministries}>{children}</AppShell>;
 };
 
 export default AppLayout;

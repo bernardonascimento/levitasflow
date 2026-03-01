@@ -252,7 +252,8 @@ export const translations = {
         noMinistry: "Sem ministério",
         welcome: "Bem-vindo 👋",
         welcomeWithName: "Bem-vindo, {name} 👋",
-        createNow: "Criar agora"
+        createNow: "Criar agora",
+        createNewMinistry: "Criar novo ministério"
       },
       search: {
         placeholder: "Buscar músicas, membros, escalas…"
@@ -558,7 +559,8 @@ export const translations = {
         noMinistry: "No ministry",
         welcome: "Welcome 👋",
         welcomeWithName: "Welcome, {name} 👋",
-        createNow: "Create now"
+        createNow: "Create now",
+        createNewMinistry: "Create new ministry"
       },
       search: {
         placeholder: "Search songs, members, schedules…"
