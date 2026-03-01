@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, Plus } from "lucide-react";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
+import type { UserAvatarUser } from "@web/presentation/components/app/UserAvatar";
 
 export type MinistryOption = {
   id: string;
@@ -12,11 +13,25 @@ export type MinistryOption = {
   slug: string;
 };
 
+function getFirstName(user: UserAvatarUser | null): string {
+  if (!user) return "";
+  const full = user.user_metadata?.full_name ?? user.user_metadata?.name;
+  if (typeof full === "string" && full.trim()) {
+    const first = full.trim().split(/\s+/)[0];
+    return first ?? "";
+  }
+  if (user.email) {
+    return user.email.split("@")[0] ?? "";
+  }
+  return "";
+}
+
 type WorkspaceSwitcherProps = {
+  user: UserAvatarUser | null;
   ministries: MinistryOption[];
 };
 
-const WorkspaceSwitcher = ({ ministries }: WorkspaceSwitcherProps): JSX.Element => {
+const WorkspaceSwitcher = ({ user, ministries }: WorkspaceSwitcherProps): JSX.Element => {
   const { translate } = useAppLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -24,6 +39,12 @@ const WorkspaceSwitcher = ({ ministries }: WorkspaceSwitcherProps): JSX.Element 
   const selected = ministries.find((m) => m.id === selectedId) ?? ministries[0] ?? null;
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const firstName = getFirstName(user);
+  const welcomeText =
+    firstName.length > 0
+      ? translate("dashboard.workspace.welcomeWithName").replace("{name}", firstName)
+      : translate("dashboard.workspace.welcome");
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent): void => {
@@ -41,9 +62,7 @@ const WorkspaceSwitcher = ({ ministries }: WorkspaceSwitcherProps): JSX.Element 
   if (ministries.length === 0) {
     return (
       <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface2)]/70 p-3">
-        <p className="text-sm font-semibold text-[color:var(--muted)]">
-          {translate("dashboard.workspace.noMinistry")}
-        </p>
+        <p className="text-sm font-semibold text-[color:var(--text)]">{welcomeText}</p>
         <Link
           href="/app"
           className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-[color:var(--accent)] transition hover:underline"
@@ -57,6 +76,7 @@ const WorkspaceSwitcher = ({ ministries }: WorkspaceSwitcherProps): JSX.Element 
 
   return (
     <div ref={ref} className="relative">
+      <p className="mb-2 text-xs font-semibold text-[color:var(--muted)]">{welcomeText}</p>
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}

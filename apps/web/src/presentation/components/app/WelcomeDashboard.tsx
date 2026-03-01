@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CalendarDays, LoaderCircle, UserPlus, Users } from "lucide-react";
 import Button from "@web/presentation/components/Button";
+import SurfaceCard from "@web/components/ui/SurfaceCard";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 import { createSupabaseBrowserClient } from "@web/lib/supabase/browser";
 import { motion } from "framer-motion";
@@ -106,7 +107,7 @@ const WelcomeDashboard = (): JSX.Element => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.28 }}
     >
-      <section className="rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--surface)]/80 p-6 shadow-[var(--shadow)] md:p-8">
+      <SurfaceCard>
         <h1 className="text-3xl font-black tracking-tight text-[color:var(--text)] md:text-4xl">
           {translate("dashboard.welcome.heroTitle")}
         </h1>
@@ -149,7 +150,7 @@ const WelcomeDashboard = (): JSX.Element => {
             {error}
           </p>
         ) : null}
-      </section>
+      </SurfaceCard>
 
       <section>
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.1em] text-[color:var(--muted)]">

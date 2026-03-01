@@ -18,7 +18,7 @@ const AppShell = ({ user, ministries, children }: AppShellProps): JSX.Element =>
       <AppHeader user={user} />
 
       <div className="mx-auto flex w-full max-w-[78rem] gap-4 px-4 py-4 md:gap-5 md:px-6 md:py-5">
-        <AppSidebar ministries={ministries} />
+        <AppSidebar user={user} ministries={ministries} />
 
         <main className="min-h-0 min-w-0 flex-1">{children}</main>
       </div>

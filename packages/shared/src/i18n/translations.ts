@@ -232,7 +232,7 @@ export const translations = {
         notices: "Avisos",
         repertoire: "Repertório",
         unavailable: "Indisponíveis",
-        groups: "Meus Grupos",
+        groups: "Minhas equipes",
         plans: "Planos"
       },
       profile: {
@@ -244,12 +244,14 @@ export const translations = {
         title: "Crie seu ministério",
         subtitle: "Seu primeiro workspace começa com nome e identidade.",
         nameLabel: "Nome do ministério",
-        namePlaceholder: "Ministério de Música da IPFF",
+        namePlaceholder: "Ministério Novo Canto",
         submit: "Criar ministério",
         helper: "Você poderá criar equipes, cadastrar membros e organizar funções logo em seguida."
       },
       workspace: {
         noMinistry: "Sem ministério",
+        welcome: "Bem-vindo 👋",
+        welcomeWithName: "Bem-vindo, {name} 👋",
         createNow: "Criar agora"
       },
       search: {
@@ -536,7 +538,7 @@ export const translations = {
         notices: "Notices",
         repertoire: "Repertoire",
         unavailable: "Unavailable",
-        groups: "My Groups",
+        groups: "My teams",
         plans: "Plans"
       },
       profile: {
@@ -548,12 +550,14 @@ export const translations = {
         title: "Create your ministry",
         subtitle: "Your first workspace starts with name and identity.",
         nameLabel: "Ministry name",
-        namePlaceholder: "IPFF Worship Ministry",
+        namePlaceholder: "New Song Ministry",
         submit: "Create ministry",
         helper: "Then you can add teams, register members, and organize roles."
       },
       workspace: {
         noMinistry: "No ministry",
+        welcome: "Welcome 👋",
+        welcomeWithName: "Welcome, {name} 👋",
         createNow: "Create now"
       },
       search: {
