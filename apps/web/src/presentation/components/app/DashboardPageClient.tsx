@@ -7,6 +7,7 @@ import Button from "@web/presentation/components/Button";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 import { useMinistries } from "@web/presentation/providers/MinistryProvider";
 import MemberCreateCard from "@web/presentation/components/app/MemberCreateCard";
+import OverviewDashboard from "@web/presentation/components/dashboard/overview/OverviewDashboard";
 import {
   getDashboardSummaryAction,
   type DashboardSummary as DashboardSummaryType
@@ -43,6 +44,10 @@ const DashboardPageClient = ({
     };
   }, [ministryId]);
 
+  if (selectedMinistry) {
+    return <OverviewDashboard ministry={selectedMinistry} summary={summary} />;
+  }
+
   const cardKey = (key: DashboardCardKey): `dashboard.cards.${DashboardCardKey}` =>
     `dashboard.cards.${key}`;
 
@@ -62,7 +67,7 @@ const DashboardPageClient = ({
       >
         <div>
           <h1 className="text-2xl font-black tracking-tight text-[color:var(--text)] md:text-3xl">
-            {selectedMinistry?.name ?? translate("dashboard.title")}
+            {translate("dashboard.title")}
           </h1>
           <p className="mt-1 text-sm text-[color:var(--muted)]">
             {translate("dashboard.subtitle")}
@@ -142,9 +147,7 @@ const DashboardPageClient = ({
           <Users className="h-5 w-5 text-[color:var(--muted)]" />
           {translate("dashboard.teamMembers")}
         </h2>
-        {ministryId ? (
-          <MemberCreateCard ministryId={ministryId} />
-        ) : null}
+        {ministryId ? <MemberCreateCard ministryId={ministryId} /> : null}
       </motion.section>
     </div>
   );

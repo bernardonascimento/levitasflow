@@ -1,0 +1,58 @@
+/* Same visual language as AuthCard (atmosphere, aura, glow) */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.2rem;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--hero-card-border) 80%, transparent);
+  backdrop-filter: blur(1rem);
+  transition: box-shadow 280ms ease, border-color 250ms ease;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 0 0 56px color-mix(in srgb, var(--accent) 14%, transparent);
+  opacity: 0.75;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+.glowLeft {
+  pointer-events: none;
+  position: absolute;
+  left: -5rem;
+  top: -5rem;
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  filter: blur(3rem);
+}
+
+.glowRight {
+  pointer-events: none;
+  position: absolute;
+  bottom: -5rem;
+  right: -4rem;
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent2) 22%, transparent);
+  filter: blur(3rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    transition: none;
+  }
+}

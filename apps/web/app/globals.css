@@ -353,6 +353,163 @@ html.dark .clarity-feature-card {
     0 0 0 1px color-mix(in srgb, var(--accent) 26%, transparent);
 }
 
+/* Reutilizável: lista/row com borda laranja sutil + glow no hover (padrão LevitasFlow) */
+.glow-list-item {
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--surface2) 78%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.glow-list-item:hover,
+.glow-list-item:focus-within {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--hero-card-border) 66%);
+  box-shadow:
+    0 12px 28px color-mix(in srgb, var(--hero-card-shadow) 40%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--accent) 26%, transparent);
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--hero-card-bg) 96%, transparent),
+    color-mix(in srgb, var(--surface2) 82%, transparent)
+  );
+}
+
+.glow-list-item:focus-visible {
+  outline: none;
+  box-shadow:
+    0 12px 28px color-mix(in srgb, var(--hero-card-shadow) 40%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--accent) 26%, transparent),
+    0 0 0 3px var(--ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-list-item {
+    transition: none;
+  }
+  .glow-list-item:hover,
+  .glow-list-item:focus-within {
+    transform: none;
+  }
+}
+
+/* Leaderboard "Mais presentes": item com barra proporcional */
+.presence-item {
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--hero-card-bg) 94%, transparent),
+    color-mix(in srgb, var(--surface2) 78%, transparent)
+  );
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.presence-item:hover {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.presence-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.presence-header .avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface2) 90%, var(--border));
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.presence-header .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.presence-header .name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.presence-header .percentage {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.progress-bar {
+  height: 8px;
+  width: 100%;
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: width 0.6s ease;
+}
+
+/* Alerta do líder: pulse suave (respeitar prefers-reduced-motion no componente) */
+@keyframes leader-alert-pulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--hero-card-border) 80%, transparent),
+      0 0 24px color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+  50% {
+    box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--accent) 28%, transparent),
+      0 0 32px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+}
+
+.leader-alert-card-pulse {
+  animation: leader-alert-pulse 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leader-alert-card-pulse {
+    animation: none;
+  }
+}
+
+/* Gráfico de participação: alinhado à esquerda com o título */
+.participation-chart-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 0;
+  width: 100%;
+}
+
 .clarity-feature-pattern {
   background-image: radial-gradient(color-mix(in srgb, var(--text) 8%, transparent) 0.8px, transparent 0.8px);
   background-size: 7px 7px;
