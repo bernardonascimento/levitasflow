@@ -1,8 +1,8 @@
 "use client";
 
 import { useMinistries } from "@web/presentation/providers/MinistryProvider";
-import DashboardPageClient from "@web/presentation/components/app/DashboardPageClient";
 import WelcomeDashboard from "@web/presentation/components/app/WelcomeDashboard";
+import DashboardContent from "@web/presentation/components/dashboard/DashboardContent";
 import type { DashboardSummary } from "@web/lib/ministry/actions";
 
 const EMPTY_SUMMARY: DashboardSummary = {
@@ -33,7 +33,7 @@ const AppDashboardContent = ({
   }
 
   return (
-    <DashboardPageClient
+    <DashboardContent
       defaultMinistryId={ministryId}
       initialSummary={serverSummary ?? EMPTY_SUMMARY}
     />

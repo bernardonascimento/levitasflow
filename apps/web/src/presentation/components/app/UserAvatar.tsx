@@ -1,15 +1,16 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
 import { ChevronDown, LogOut, User } from "lucide-react";
 import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
 import { createSupabaseBrowserClient } from "@web/lib/supabase/browser";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export type UserAvatarUser = {
   id: string;
   email: string | null;
+  /** URL do avatar quando já resolvida no servidor (ex.: a partir de identities) */
+  avatar_url?: string | null;
   user_metadata?: {
     full_name?: string | null;
     name?: string | null;
@@ -21,6 +22,7 @@ export type UserAvatarUser = {
 };
 
 function getAvatarUrl(user: UserAvatarUser): string | null {
+  if (user.avatar_url) return user.avatar_url;
   const meta = user.user_metadata;
   if (!meta) return null;
   return meta.avatar_url ?? meta.picture ?? meta.photo_url ?? null;
@@ -47,13 +49,35 @@ type UserAvatarProps = {
 
 const UserAvatar = ({ user }: UserAvatarProps): JSX.Element => {
   const { translate } = useAppLanguage();
-  const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [clientAvatarUrl, setClientAvatarUrl] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const avatarUrl = getAvatarUrl(user);
+  const avatarFromProps = getAvatarUrl(user);
+  const avatarUrl = clientAvatarUrl ?? avatarFromProps;
   const showAvatar = Boolean(avatarUrl) && !imgError;
   const initials = getInitials(user);
+  // Resetar erro ao trocar de usuário/URL para permitir nova tentativa
+  useEffect(() => {
+    setImgError(false);
+  }, [avatarUrl]);
+  // No cliente, obter avatar da sessão (identities podem vir só no client)
+  useEffect(() => {
+    let cancelled = false;
+    const supabase = createSupabaseBrowserClient();
+    supabase.auth.getUser().then(({ data: { user: sessionUser } }) => {
+      if (cancelled || !sessionUser) return;
+      const meta = sessionUser.user_metadata as Record<string, unknown> | undefined;
+      const fromMeta = meta?.avatar_url ?? meta?.picture ?? meta?.photo_url;
+      const idData = sessionUser.identities?.[0]?.identity_data as Record<string, unknown> | undefined;
+      const fromIdentity = idData?.avatar_url ?? idData?.picture;
+      const url = (fromMeta as string) ?? (fromIdentity as string) ?? null;
+      if (url) setClientAvatarUrl(url);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   const displayLabel =
     user.user_metadata?.full_name ?? user.user_metadata?.name ?? user.email ?? "";
 
@@ -94,13 +118,14 @@ const UserAvatar = ({ user }: UserAvatarProps): JSX.Element => {
           aria-hidden
         >
           {showAvatar ? (
-            <Image
+            // eslint-disable-next-line @next/next/no-img-element -- Avatar OAuth: URLs externas variam; <img> evita restrição de domínio do next/image
+            <img
               src={avatarUrl!}
               alt=""
               width={36}
               height={36}
-              className="object-cover"
-              unoptimized
+              className="h-9 w-9 object-cover"
+              referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
             />
           ) : (

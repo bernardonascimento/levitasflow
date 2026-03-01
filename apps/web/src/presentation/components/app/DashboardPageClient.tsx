@@ -29,19 +29,19 @@ const DashboardPageClient = ({
   const reduceMotion = useReducedMotion();
   const { selectedMinistry, selectedMinistryId } = useMinistries();
   const [fetchedSummary, setFetchedSummary] = useState<DashboardSummary | null>(null);
-
+  const ministryId = selectedMinistryId ?? defaultMinistryId;
   const summary = fetchedSummary ?? initialSummary;
 
   useEffect(() => {
-    if (!selectedMinistryId) return;
+    if (!ministryId) return;
     let cancelled = false;
-    getDashboardSummaryAction(selectedMinistryId).then((data) => {
+    getDashboardSummaryAction(ministryId).then((data) => {
       if (!cancelled) setFetchedSummary(data);
     });
     return () => {
       cancelled = true;
     };
-  }, [selectedMinistryId]);
+  }, [ministryId]);
 
   const cardKey = (key: DashboardCardKey): `dashboard.cards.${DashboardCardKey}` =>
     `dashboard.cards.${key}`;
@@ -54,7 +54,7 @@ const DashboardPageClient = ({
   ];
 
   return (
-    <main className="space-y-6 pb-8">
+    <div className="space-y-6 pb-8">
       <motion.header
         initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -142,11 +142,11 @@ const DashboardPageClient = ({
           <Users className="h-5 w-5 text-[color:var(--muted)]" />
           {translate("dashboard.teamMembers")}
         </h2>
-        {selectedMinistryId ? (
-          <MemberCreateCard ministryId={selectedMinistryId} />
+        {ministryId ? (
+          <MemberCreateCard ministryId={ministryId} />
         ) : null}
       </motion.section>
-    </main>
+    </div>
   );
 };
 
