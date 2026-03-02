@@ -1,16 +1,9 @@
 "use client";
 
-import { useAppLanguage } from "@web/presentation/providers/LanguageProvider";
+import AgendaView from "@web/presentation/components/agenda/AgendaView";
 
 const CalendarView = (): JSX.Element => {
-  const { translate } = useAppLanguage();
-  return (
-    <div className="space-y-6 pb-8">
-      <h1 className="text-2xl font-black tracking-tight text-[color:var(--text)] md:text-3xl">
-        {translate("dashboard.sidebar.agenda")}
-      </h1>
-    </div>
-  );
+  return <AgendaView />;
 };
 
 export default CalendarView;
